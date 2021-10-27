@@ -14,6 +14,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
      @IBOutlet weak var tablaGrabaciones: UITableView!
       
+    @IBOutlet weak var Slider: UISlider!
+    
     var grabaciones:[Grabacion] = []
     var reproducirAudio:AVAudioPlayer?
     
@@ -33,9 +35,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UITableViewCell
         let grabacion = grabaciones[indexPath.row]
         cell.textLabel?.text = grabacion.nombre
+        cell.detailTextLabel?.text = grabacion.tiempo
         return cell
         
        }
@@ -72,6 +75,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             } catch {}
         }
     }
+    
+    
+    
+    @IBAction func Valumen(_ sender: UISlider) {
+        
+        print(sender.value)
+        reproducirAudio!.volume = sender.value
+    }
+    
     
 }
 

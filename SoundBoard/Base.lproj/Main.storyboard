@@ -16,15 +16,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Gg-BO-tgl">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="644"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="fPz-FO-9xH" detailTextLabel="toH-1o-n58" style="IBUITableViewCellStyleValue1" id="2le-rq-eGZ">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2le-rq-eGZ" id="v0A-WW-ld2">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fPz-FO-9xH">
+                                                    <rect key="frame" x="20" y="12" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="toH-1o-n58">
+                                                    <rect key="frame" x="350" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4tP-Zp-L5U">
+                                <rect key="frame" x="8" y="782" width="398" height="31"/>
+                                <connections>
+                                    <action selector="Valumen:" destination="BYZ-38-t0r" eventType="valueChanged" id="2ta-62-Gnq"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4tP-Zp-L5U" secondAttribute="trailing" constant="10" id="BSu-KR-gI7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Gg-BO-tgl" secondAttribute="trailing" id="ECO-RL-DSb"/>
                             <constraint firstItem="2Gg-BO-tgl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Koq-Ic-j6t"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Gg-BO-tgl" secondAttribute="bottom" id="mwS-k4-9tV"/>
+                            <constraint firstItem="4tP-Zp-L5U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="XOJ-JF-v3D"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4tP-Zp-L5U" secondAttribute="bottom" constant="50" id="cSz-lj-wAI"/>
+                            <constraint firstItem="4tP-Zp-L5U" firstAttribute="top" secondItem="2Gg-BO-tgl" secondAttribute="bottom" constant="50" id="dKa-d4-iZM"/>
                             <constraint firstItem="2Gg-BO-tgl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wtr-IH-ahg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -37,6 +72,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="Slider" destination="4tP-Zp-L5U" id="hVj-W0-lKP"/>
                         <outlet property="tablaGrabaciones" destination="2Gg-BO-tgl" id="gpy-mb-V7E"/>
                     </connections>
                 </viewController>
@@ -62,7 +98,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsV-WE-dSl">
-                                <rect key="frame" x="143.5" y="150" width="127" height="29"/>
+                                <rect key="frame" x="143.5" y="202" width="127" height="29"/>
                                 <state key="normal" title="  Reproducir" image="reproducir">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -71,19 +107,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APn-hn-PkF">
-                                <rect key="frame" x="20" y="209" width="374" height="27.5"/>
+                                <rect key="frame" x="20" y="261" width="374" height="27.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Nombre de Audio" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCZ-KZ-EPT">
-                                <rect key="frame" x="20" y="256.5" width="374" height="25"/>
+                                <rect key="frame" x="20" y="308.5" width="374" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qp1-FW-clA">
-                                <rect key="frame" x="178" y="301.5" width="58" height="32"/>
+                                <rect key="frame" x="178" y="353.5" width="58" height="32"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Agregar">
@@ -93,23 +129,32 @@
                                     <action selector="agregarTapped:" destination="ahC-6R-UkU" eventType="touchUpInside" id="vcJ-eN-R9p"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48b-Z1-fyU">
+                                <rect key="frame" x="10" y="140" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="48b-Z1-fyU" firstAttribute="leading" secondItem="QNy-Ba-guI" secondAttribute="leading" constant="10" id="17B-Lu-qrm"/>
                             <constraint firstItem="OsV-WE-dSl" firstAttribute="centerX" secondItem="QNy-Ba-guI" secondAttribute="centerX" id="B8L-rf-dOe"/>
                             <constraint firstItem="APn-hn-PkF" firstAttribute="top" secondItem="OsV-WE-dSl" secondAttribute="bottom" constant="30" id="Cx8-IL-VEY"/>
                             <constraint firstItem="Qp1-FW-clA" firstAttribute="centerX" secondItem="QNy-Ba-guI" secondAttribute="centerX" id="D0q-re-eoM"/>
                             <constraint firstItem="zCZ-KZ-EPT" firstAttribute="leading" secondItem="QNy-Ba-guI" secondAttribute="leading" constant="20" id="ELk-6D-S3Z"/>
                             <constraint firstItem="Qp1-FW-clA" firstAttribute="top" secondItem="zCZ-KZ-EPT" secondAttribute="bottom" constant="20" id="Iik-A0-L1M"/>
+                            <constraint firstItem="OsV-WE-dSl" firstAttribute="top" secondItem="48b-Z1-fyU" secondAttribute="bottom" constant="41" id="IzZ-Py-p3M"/>
                             <constraint firstItem="dwB-Q0-oWa" firstAttribute="top" secondItem="QNy-Ba-guI" secondAttribute="top" constant="20" id="NQh-27-ebN"/>
                             <constraint firstItem="zCZ-KZ-EPT" firstAttribute="top" secondItem="APn-hn-PkF" secondAttribute="bottom" constant="20" id="S2u-LR-CJa"/>
                             <constraint firstItem="APn-hn-PkF" firstAttribute="leading" secondItem="QNy-Ba-guI" secondAttribute="leading" constant="20" id="TB0-QP-jqg"/>
                             <constraint firstItem="QNy-Ba-guI" firstAttribute="trailing" secondItem="zCZ-KZ-EPT" secondAttribute="trailing" constant="20" id="W6f-1b-Sda"/>
+                            <constraint firstItem="QNy-Ba-guI" firstAttribute="trailing" secondItem="48b-Z1-fyU" secondAttribute="trailing" constant="10" id="ZND-em-4ZL"/>
                             <constraint firstItem="dwB-Q0-oWa" firstAttribute="centerX" secondItem="QNy-Ba-guI" secondAttribute="centerX" id="cgL-zf-YYu"/>
+                            <constraint firstItem="48b-Z1-fyU" firstAttribute="top" secondItem="dwB-Q0-oWa" secondAttribute="bottom" constant="10" id="flD-6x-43o"/>
                             <constraint firstItem="QNy-Ba-guI" firstAttribute="trailing" secondItem="APn-hn-PkF" secondAttribute="trailing" constant="20" id="g6D-Jo-0HE"/>
                             <constraint firstItem="APn-hn-PkF" firstAttribute="centerX" secondItem="QNy-Ba-guI" secondAttribute="centerX" id="gAc-ph-C1Y"/>
                             <constraint firstItem="zCZ-KZ-EPT" firstAttribute="centerX" secondItem="QNy-Ba-guI" secondAttribute="centerX" id="k05-6D-EMz"/>
-                            <constraint firstItem="OsV-WE-dSl" firstAttribute="top" secondItem="dwB-Q0-oWa" secondAttribute="bottom" constant="20" id="r9m-tD-JG6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QNy-Ba-guI"/>
                     </view>
@@ -117,6 +162,7 @@
                     <connections>
                         <outlet property="agregarButton" destination="Qp1-FW-clA" id="Dj6-zr-hi4"/>
                         <outlet property="grabarButton" destination="dwB-Q0-oWa" id="hg4-0G-J9A"/>
+                        <outlet property="lblTime" destination="48b-Z1-fyU" id="wev-Uy-WSr"/>
                         <outlet property="nombreTextField" destination="zCZ-KZ-EPT" id="axy-OK-RVk"/>
                         <outlet property="reproducirButton" destination="OsV-WE-dSl" id="G9q-E5-ziq"/>
                     </connections>

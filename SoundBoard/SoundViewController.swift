@@ -12,6 +12,9 @@ import AVFoundation
 class SoundViewController: UIViewController {
 
     
+    @IBOutlet weak var lblTime: UILabel!
+    
+    
     
     @IBOutlet weak var grabarButton: UIButton!
     @IBOutlet weak var reproducirButton: UIButton!
@@ -22,6 +25,21 @@ class SoundViewController: UIViewController {
     var reproducirAudio:AVAudioPlayer?
     var audioURL:URL?
     
+    var timer = Timer()
+    var minutos = 0 // variable minuto
+    var segundos = 0 //varible integer
+    
+    @objc func cadaSegundo(){
+        segundos += 1
+        
+        if(segundos > 59){
+            segundos = 0
+            minutos += 1
+        }
+        
+        lblTime.text = "\(minutos) : \(segundos)"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configurarGrabacion()
@@ -29,12 +47,17 @@ class SoundViewController: UIViewController {
         reproducirButton.isEnabled = false
         agregarButton.isEnabled = false
         // Do any additional setup after loading the view.
+        
+        
     }
     
     
     @IBAction func grabarTapped(_ sender: Any) {
         if grabarAudio!.isRecording{
             //deterner la grabacion
+            timer.invalidate() //detenemos el contador
+            
+            
             grabarAudio?.stop()
             //Cambiar texo del boton grabar
             grabarButton.setTitle("GRABAR", for: .normal)
@@ -42,20 +65,31 @@ class SoundViewController: UIViewController {
             agregarButton.isEnabled = true
             
         }else{
+            segundos = 0
             //Empesar a grabar
             grabarAudio?.record()
+            
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(cadaSegundo), userInfo: nil, repeats: true)
+            
             //CAmbiar el texto de boton grabar a detener
             grabarButton.setTitle("DETENER", for: .normal)
             reproducirButton.isEnabled = false
         }
     }
     
-    @IBAction func reproducirTapped(_ sender: Any) {
+    @IBAction func reproducirTapped(_ sender: UIButton) {
     
+        
         do{
-            try reproducirAudio = AVAudioPlayer(contentsOf: audioURL!)
-            reproducirAudio!.play()
-            print("Reprodiciendo")
+          
+        try reproducirAudio = AVAudioPlayer(contentsOf: audioURL!)
+            
+                reproducirAudio!.play()
+                print("Reprodiciendo")
+                reproducirButton.setTitle("REPRODUCIR ", for: .normal )
+                
+            
+            
         }catch{}
     }
         
@@ -65,6 +99,7 @@ class SoundViewController: UIViewController {
         let grabacion = Grabacion(context: context)
         grabacion.nombre = nombreTextField.text
         grabacion.audio = NSData(contentsOf: audioURL!)! as Data
+        grabacion.tiempo = lblTime.text
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         navigationController!.popViewController(animated: true)
         
